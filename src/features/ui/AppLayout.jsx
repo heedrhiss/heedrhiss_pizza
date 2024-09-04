@@ -11,10 +11,10 @@ const navigation = useNavigation()
 const isLoading = navigation.state === 'loading';
 
     return (
-        <div className='layout'>
+        <div className='grid grid-row-[auto_1fr_auto] h-screen'>
             <Header/>
             {isLoading && <Loader/>}
-            <main>
+            <main className='overflow-scroll'>
                 <Outlet/>
             </main>
             <CartOverview/>
