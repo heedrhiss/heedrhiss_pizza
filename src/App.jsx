@@ -13,9 +13,9 @@ const router = createBrowserRouter([
   errorElement: <Error/>,
    children: [
    {path: '/',      element: <Home /> },
-   {path: '/cart',  element: <Cart /> },
+   {path: '/cart',  element: <Cart />, errorElement: <Error/>, },
    {path: '/menu',  element: <Menu/> , errorElement: <Error/> , loader: menuLoader},
-   {path: '/order/new', element: <CreateOrder/>, action: createAction},
+   {path: '/order/new', element: <CreateOrder/>, errorElement: <Error/>, action: createAction},
    {path: '/order/:orderId', element: <Order/> , errorElement: <Error/> , loader: orderLoader}
   ]}
 ])
