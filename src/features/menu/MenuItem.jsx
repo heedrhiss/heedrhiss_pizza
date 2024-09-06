@@ -11,8 +11,11 @@ function MenuItem({ pizza }) {
         <p className="font-semibold">{name}</p>
         <p className="capitalize italic">{ingredients.join(', ')}</p>
         <div className="flex items-center justify-between text-md font-medium mt-auto">
-          {!soldOut ? <p>{formatCurrency(unitPrice)}</p> : <p className="text-stone-500">Sold out</p>}
-        {!soldOut && <Button type="small">Add to Cart</Button>}
+          {!soldOut ? <>
+          <p>{formatCurrency(unitPrice)}</p>
+          <Button type="small">Add to Cart</Button>
+          </>
+           : <p className="text-stone-500">Sold out</p>}
         </div>
       </div>
     </li>

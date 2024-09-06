@@ -1,13 +1,15 @@
+import { formatCurrency } from "../utilities/helpers";
+
 function OrderItem({ item, isLoadingIngredients, ingredients }) {
   const { quantity, name, totalPrice } = item;
 
   return (
-    <li>
-      <div>
+    <li className="my-3 p-2">
+      <div className="flex items-center justify-between mt-1">
         <p>
-          <span>{quantity}&times;</span> {name}
+          <span className="font-semibold">{quantity}&times;</span> {name}
         </p>
-        <p>{formatCurrency(totalPrice)}</p>
+        <p className="font-semibold">{formatCurrency(totalPrice)}</p>
       </div>
     </li>
   );

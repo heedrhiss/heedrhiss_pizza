@@ -7,7 +7,7 @@ function Menu() {
 
   return <div>
     <h1 className="text-xl font-bold uppercase text-center">Menu</h1>
-    <ul className="divide-y divide-slate-400">
+    <ul className="divide-y divide-stone-300">
       {menu.map(pizza => (<MenuItem pizza={pizza} key={pizza.id}/>))}
     </ul>
     </div>

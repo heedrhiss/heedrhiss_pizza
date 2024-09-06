@@ -42,31 +42,31 @@ function CreateOrder() {
   const cart = fakeCart;
 
   return (
-    <div>
-      <h2>Ready to order? Let's go!</h2>
+    <div className="px-1">
+      <h2 className="font-semibold text-xl my-8">Ready to order? Let's go!</h2>
 
       <Form method="POST">
-        <div>
-          <label>First Name</label>
-          <input className="input" type="text" name="customer" required />
+        <div className="flex flex-col sm:flex-row mb-7 sm:items-center grow">
+          <label className="sm:basis-40">First Name</label>
+          <input className="input grow" type="text" name="customer" required />
         </div>
 
-        <div>
-          <label>Phone number</label>
-          <div>
-            <input className="input" type="tel" name="phone" required />
-          </div>
-          {formErrors?.phone && <p>{formErrors.phone}</p>}
-        </div>
-
-        <div>
-          <label>Address</label>
-          <div>
-            <input className="input" type="text" name="address" required />
+        <div className="flex flex-col sm:flex-row sm:items-center mb-7">
+          <label className="sm:basis-40">Phone Number</label>
+          <div className="grow">
+            <input className="input w-full" type="tel" name="phone" required />
+            {formErrors?.phone && <p className="text-red-700 bg-red-200 rounded-xl py-1 px-3 text-sm mt-1 italic">{formErrors.phone}</p>}
           </div>
         </div>
 
-        <div>
+        <div className="flex flex-col sm:flex-row sm:items-center mb-7">
+          <label className="sm:basis-40">Address</label>
+          <div className="grow">
+            <input className="input w-full" type="text" name="address" required />
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-3 font-semibold mb-7">
           <input
             type="checkbox"
             name="priority"
@@ -94,7 +94,7 @@ export async function createAction({request}){
   const errors = {};
 
   if(!isValidPhone(order.phone))
-  errors.phone = "Pleas provide a valide phone number";
+  errors.phone = "Please provide a valide phone number...!";
   if(Object.keys(errors).length >0) return errors
 
   const newOrder = await createOrder(order)
