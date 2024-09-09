@@ -3,6 +3,7 @@ import Button from "../ui/Button";
 import { formatCurrency } from "../utilities/helpers";
 import { addItem, getCartQuantity } from "../cart/CartSlice";
 import DeleteButton from "../ui/DeleteButton";
+import UpdateButtons from "../ui/UpdateButtons";
 
 
 
@@ -32,7 +33,12 @@ function MenuItem({ pizza }) {
           
           {!soldOut ? <>
           <p>{formatCurrency(unitPrice)}</p>
-          {isInCart ? <DeleteButton pizzaId={id}/> :
+          {isInCart ? 
+          <>
+          <UpdateButtons pizzaId={id}/>
+          <DeleteButton pizzaId={id}/>
+          </>
+           :
           <Button type="small" onClick={handleAdd}>Add to Cart</Button>}
           </>
            : <Button type="secondary">Sold Out</Button>}

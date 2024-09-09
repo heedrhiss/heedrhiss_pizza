@@ -47,7 +47,7 @@ function Order() {
         <p>(Estimated delivery: {formatDate(estimatedDelivery)})</p>
       </div>
 
-      <ul className="divide-y divide-slate-300 border-b border-slate-300">{cart.map(item => <OrderItem item={item}/>)}</ul>
+      <ul className="divide-y divide-slate-300 border-b border-slate-300">{cart.map(item => <OrderItem item={item} key={item.id}/>)}</ul>
 
       <div className="bg-slate-300 p-6">
         <p>Price pizza: {formatCurrency(orderPrice)}</p>
