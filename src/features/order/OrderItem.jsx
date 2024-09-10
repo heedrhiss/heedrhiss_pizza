@@ -2,6 +2,8 @@ import { formatCurrency } from "../utilities/helpers";
 
 function OrderItem({ item, isLoadingIngredients, ingredients }) {
   const { quantity, name, totalPrice } = item;
+  console.log(ingredients)
+  console.log(isLoadingIngredients)
 
   return (
     <li className="my-3 p-2">
