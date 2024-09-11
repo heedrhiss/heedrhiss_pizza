@@ -46,13 +46,13 @@ function CreateOrder() {
           </div>
         </div>
 
-        <div className="relative flex flex-col sm:flex-row sm:items-center mb-7">
+        <div className="relative flex flex-col sm:flex-row sm:items-center mb-7 z-10">
           <label className="sm:basis-40">Address</label>
           <div className="grow">
             <input className="input w-full" type="text" disabled={isLoading} defaultValue={address} name="address" required />
             {error && <p className="text-red-700 bg-red-200 rounded-xl py-1 px-3 text-sm mt-1 italic">{error}</p>}
           </div>
-          {!address && <span className="absolute right-0 top-6 sm:top-0"><Button type="primary" onClick={(e)=>{
+          {!address && <span className="absolute right-0 top-6 sm:top-0 z-20"><Button type="primary" onClick={(e)=>{
             e.preventDefault()
             dispatch(fetchAddress())}}>Get position</Button></span>}
         </div>
