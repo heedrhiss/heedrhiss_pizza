@@ -10,18 +10,18 @@ import {
 import { getOrder } from "../services/apiRestaurant";
 import OrderItem from "./OrderItem";
 import { useEffect } from "react";
+import UpdateButton from "../ui/UpdateButton";
 
 
 function Order() {
   // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
   const order = useLoaderData();
   const fetcher = useFetcher();
-  const isLoadingIngredients = fetcher.status === "loading";
+  const isLoadingIngredients = fetcher.state === "loading";
 
   useEffect(function(){
-    if(!fetcher.data) fetcher.load('/menu')
+    if(!fetcher.data && fetcher.state === "idle") fetcher.load('/menu')
   },[fetcher])
-  console.log(fetcher.data)
   
   const {
     id,
@@ -56,7 +56,7 @@ function Order() {
       </div>
 
       <ul className="divide-y divide-slate-300 border-b border-slate-300">{cart.map(item => <OrderItem item={item} key={item.pizzaId}
-      ingredients={fetcher?.data.find((el)=> el.id===item.pizzaId).ingredients}
+      ingredients={fetcher?.data?.find((el)=> el.id === item.pizzaId)?.ingredients ?? []}
       isLoadingIngredients={isLoadingIngredients}/>)}</ul>
 
       <div className="bg-slate-300 p-6">
@@ -64,6 +64,7 @@ function Order() {
         {priority && <p>Price priority: {formatCurrency(priorityPrice)}</p>}
         <p className="font-semibold">To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
       </div>
+      {!priority && <UpdateButton/>}
     </div>
   );
 }
