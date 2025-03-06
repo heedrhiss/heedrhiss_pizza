@@ -13,6 +13,7 @@ function Home() {
         <span className='text-yellow-500'>Straight out of the oven, straight to you.</span>
       </h1>
       {username ? <Button to="/menu" type="primary">Continue to Menu</Button> : <CreateUser/>}
+  
     </div>
   );
 }

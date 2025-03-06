@@ -1,5 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { act } from "react"
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     cart: [ ]
